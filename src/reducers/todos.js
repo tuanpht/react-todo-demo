@@ -14,6 +14,16 @@ export default (todos = initialState.todos, action) => {
                 ...todos,
                 todo
             ]
+
+        case 'DELETE':
+            let deleted = TodoApi.delete(action.id)
+
+            if (deleted) {
+                return todos.filter(todo => todo.id !== action.id)
+            }
+
+            return todos
+
         case 'TOGGLE_STATUS':
             return todos.map(
                 oldTodo => {

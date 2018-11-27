@@ -5,8 +5,9 @@ const getTodos = () => {
 const saveTodo = todo => {
     let todos = getTodos()
     let todoId = todo.id
+    let lastTodo = todos[todos.length - 1]
     if (!todoId) {
-        todoId = todos.length + 1
+        todoId = lastTodo && lastTodo.id ? lastTodo.id + 1 : 1
         todo.id = todoId
         todos.push(todo)
     } else {
@@ -22,7 +23,17 @@ const saveTodo = todo => {
     return todo
 }
 
+const deleteTodo = id => {
+    let todos = getTodos()
+    let oldTodosCount = todos.length
+    todos = todos.filter(todo => todo.id !== id)
+    localStorage.setItem('todos', JSON.stringify(todos))
+
+    return oldTodosCount !== todos.length
+}
+
 export default {
     get: getTodos,
-    save: saveTodo
+    save: saveTodo,
+    delete: deleteTodo
 }

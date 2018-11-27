@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import FilterTypes from '../constants/FilterTypes'
-import { toggleTodo } from '../actions/todos'
+import { toggleTodo, deleteTodo } from '../actions/todos'
 import TodoList from '../components/TodoList'
 
 const filterTodos = (todos, filterType) => {
@@ -18,7 +18,8 @@ const mapStateToProps = state => ({
     todos: filterTodos(state.todos, state.filterType)
 })
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: id => dispatch(toggleTodo(id))
+    toggleTodo: id => dispatch(toggleTodo(id)),
+    deleteTodo: id => dispatch(deleteTodo(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
