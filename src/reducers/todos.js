@@ -2,9 +2,10 @@ import TodoApi from '../apis/todos'
 import initialState from './initialState'
 
 export default (todos = initialState.todos, action) => {
+    let todo
     switch (action.type) {
         case 'ADD':
-            let todo = TodoApi.save({
+            todo = TodoApi.save({
                 id: null,
                 text: action.text,
                 completed: false
@@ -14,6 +15,19 @@ export default (todos = initialState.todos, action) => {
                 ...todos,
                 todo
             ]
+
+        case 'EDIT':
+            todo = TodoApi.save({
+                id: action.id,
+                text: action.text,
+                completed: false
+            })
+
+            return todos.map(
+                oldTodo => {
+                    return oldTodo.id === todo.id ? {...oldTodo, ...todo} : oldTodo
+                }
+            )
 
         case 'DELETE':
             let deleted = TodoApi.delete(action.id)

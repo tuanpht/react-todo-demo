@@ -1,15 +1,14 @@
 import React from 'react'
 import List from '@material-ui/core/List'
-import Todo from './Todo'
+import Todo from '../containers/EditableTodo'
 
-export default ({ todos, toggleTodo, deleteTodo }) => (
+export default ({ todos }) => (
     <List>
         {todos.map(todo => (
             <Todo key={todo.id}
+                id={todo.id}
                 text={todo.text}
                 completed={todo.completed}
-                onClick={() => toggleTodo(todo.id)}
-                onClickDelete={() => deleteTodo(todo.id)}
             />
         ))}
     </List>

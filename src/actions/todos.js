@@ -3,6 +3,12 @@ export const addTodo = text => ({
     text
 })
 
+export const editTodo = (id, text) => ({
+    type: 'EDIT',
+    id,
+    text
+})
+
 export const toggleTodo = id => ({
     type: 'TOGGLE_STATUS',
     id
