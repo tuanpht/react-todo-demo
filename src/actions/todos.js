@@ -1,8 +1,6 @@
-let nextTodoId = 1
 export const addTodo = text => ({
     type: 'ADD',
-    text,
-    id: nextTodoId++
+    text
 })
 
 export const toggleTodo = id => ({

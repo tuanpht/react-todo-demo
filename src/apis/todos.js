@@ -4,19 +4,22 @@ const getTodos = () => {
 
 const saveTodo = todo => {
     let todos = getTodos()
-    let existed = false
-    todos = todos.map(oldTodo => {
-        if (oldTodo.id === todo.id) {
-            existed = true
-            return {...oldTodo, ...todo}
-        }
-        return oldTodo
-    })
-
-    if (!existed) {
+    let todoId = todo.id
+    if (!todoId) {
+        todoId = todos.length + 1
+        todo.id = todoId
         todos.push(todo)
+    } else {
+        todos = todos.map(oldTodo => {
+            if (oldTodo.id === todo.id) {
+                return {...oldTodo, ...todo}
+            }
+            return oldTodo
+        })
     }
     localStorage.setItem('todos', JSON.stringify(todos))
+
+    return todo
 }
 
 export default {

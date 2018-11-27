@@ -4,12 +4,11 @@ import initialState from './initialState'
 export default (todos = initialState.todos, action) => {
     switch (action.type) {
         case 'ADD':
-            let todo = {
-                id: action.id,
+            let todo = TodoApi.save({
+                id: null,
                 text: action.text,
                 completed: false
-            }
-            TodoApi.save(todo)
+            })
 
             return [
                 ...todos,
