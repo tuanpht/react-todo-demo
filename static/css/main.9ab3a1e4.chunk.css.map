@@ -1,0 +1,1 @@
+{"version":3,"sources":["/home/framgia/Projects/new-todoapp/src/styles/index.css"],"names":[],"mappings":"AAAA,WACI,4BAA8B,CACjC,AAED,MACI,iBAAmB,CACtB","file":"main.9ab3a1e4.chunk.css","sourcesContent":[".completed {\n    text-decoration: line-through;\n}\n\n.link {\n    padding-right: 5px;\n}\n"]}
