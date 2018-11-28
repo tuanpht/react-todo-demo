@@ -13,6 +13,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import withMobileDialog from '@material-ui/core/withMobileDialog'
+import List from '@material-ui/core/List'
 
 class Todo extends React.Component {
     constructor(props) {
@@ -107,6 +108,11 @@ class Todo extends React.Component {
                         <DialogContentText>
                             Are you sure you want to delete this todo?
                         </DialogContentText>
+                        <List>
+                            <ListItem dense button selected>
+                                {this.state.todoText}
+                            </ListItem>
+                        </List>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.closeConfirmDialog} color="primary">
