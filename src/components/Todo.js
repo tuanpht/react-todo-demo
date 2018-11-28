@@ -30,6 +30,7 @@ class Todo extends React.Component {
         this.editTodo = this.editTodo.bind(this)
         this.cancelEdit = this.cancelEdit.bind(this)
         this.handleEditTodo = this.handleEditTodo.bind(this)
+        this.handleCheckboxClick = this.handleCheckboxClick.bind(this)
     }
 
     openConfirmDialog() {
@@ -67,13 +68,18 @@ class Todo extends React.Component {
         }
     }
 
+    handleCheckboxClick(event) {
+        this.props.onClick()
+        event.stopPropagation()
+    }
+
     render() {
         return (
             <React.Fragment>
                 <ListItem dense button onClick={this.editTodo}>
                     <Checkbox
                         checked={this.props.completed}
-                        onClick={this.props.onClick}
+                        onClick={this.handleCheckboxClick}
                         tabIndex={-1}
                         disableRipple
                     />
