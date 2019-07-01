@@ -29,7 +29,7 @@ const App = ({ classes }) => (
             </Toolbar>
         </AppBar>
         <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item xs={6}>
+            <Grid item xs={10} md={8} lg={7}>
                 <Paper className={classes.paper}>
                     <AddTodo />
                     <FilterButtons />
